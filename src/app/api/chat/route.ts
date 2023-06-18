@@ -7,17 +7,17 @@ export const runtime = "edge";
 
 function buildPompt(
   messages: {
-    contne: string;
+    content: string;
     role: "system" | "user" | "assistant";
   }[]
 ) {
   return (
     messages
-      .map(({ contne, role }) => {
+      .map(({ content, role }) => {
         if (role === "user") {
-          return `<|prompter|>${contne}<|endoftext|>`;
+          return `<|prompter|>${content}<|endoftext|>`;
         } else {
-          return `<|assistant|>${contne}<|endoftext|>`;
+          return `<|assistant|>${content}<|endoftext|>`;
         }
       })
       .join("") + "<|assistant|>"
